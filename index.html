@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이주락 ♡ 전누리 결혼식에 초대합니다</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Serif KR', serif;
+            background-color: #fcfbf8;
+            color: #4a4a4a;
+        }
+
+        .myeongjo {
+            font-family: 'Nanum+Myeongjo', serif;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.open {
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body class="max-w-md mx-auto shadow-2xl bg-white min-h-screen overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- 1. 투명도를 opacity-60에서 opacity-90으로 올려 사진을 선명하게 만들었습니다. -->
+            <img
+                src="topimage.jpg"
+                onerror="this.onerror=null; this.src='topimage.png';"
+                alt="이주락 & 전누리"
+                class="w-full h-full object-cover opacity-98"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-white"></div>
+        </div>
+        
+        <!-- 2. 글자 가시성을 높이기 위해 배경에 반투명 글래스 박스(bg-white/75 backdrop-blur-md)를 씌웠습니다. -->
+        <div class="relative z-10 w-[90%] max-w-sm mx-auto bg-white/75 backdrop-blur-sm px-6 py-10 rounded-2xl shadow-lg border border-white/50 space-y-6">
+            <h2 class="text-sm tracking-[0.3em] uppercase text-gray-800 font-bold mb-2">Save the Date</h2>
+            <div class="space-y-2">
+                <p class="text-3xl font-light text-gray-900">이주락 <span class="text-xl mx-2 text-gray-600">&</span> 전누리</p>
+            </div>
+            <div class="w-px h-16 bg-gray-400 mx-auto my-6"></div>
+            <p class="text-lg tracking-widest text-gray-900 font-medium">2026. 05. 17. SUN AM 11:30</p>
+            <p class="text-sm text-gray-700">서울 세인트메리엘, 1층 메리엘 홀</p>
+        </div>
+
+        <div class="absolute bottom-10 left-0 right-0 animate-bounce text-gray-500">
+            <i class="fa-solid fa-chevron-down drop-shadow-md"></i>
+        </div>
+    </section>
+
+    <!-- Invitation Text -->
+    <section class="py-24 px-4 text-center space-y-10 fade-in">
+        <h3 class="text-xl text-amber-800/70 tracking-[0.2em]">초대합니다</h3>
+        
+        <!-- 3. 모바일 줄바꿈 방지: whitespace-nowrap 적용 및 유연한 폰트 사이즈 적용 -->
+        <div class="space-y-8 leading-loose text-gray-600 text-[14px] min-[375px]:text-base">
+            <div class="flex flex-col items-center">
+                <p class="whitespace-nowrap">닮은 점에 활짝 웃고</p>
+                <p class="whitespace-nowrap">다른 점으로부터 서로 배우는</p>
+                <p class="whitespace-nowrap">두 사람이 만났습니다.</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <p class="whitespace-nowrap">저희의 새로운 시작을 축복해 주시는</p>
+                <p class="whitespace-nowrap">그 따뜻한 마음 잊지 않고</p>
+                <p class="whitespace-nowrap">서로 아끼며 살아 가겠습니다.</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <p class="whitespace-nowrap">시간 내어 귀한 걸음해주신 점</p>
+                <p class="whitespace-nowrap">오래 잊지 않고 감사드립니다.</p>
+            </div>
+        </div>
+        
+        <div class="pt-12 space-y-4 text-lg">
+            <div class="flex items-center justify-center space-x-2">
+                <p><strong>이경수 · 이경희</strong>의</p>
+                <p class="text-sm text-gray-400">子</p>
+                <p><strong>주락</strong></p>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+                <p><strong>전종호 · 김옥순</strong>의</p>
+                <p class="text-sm text-gray-400">女</p>
+                <p><strong>누리</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="py-16 bg-stone-50 text-center fade-in">
+        <h3 class="text-sm tracking-widest text-stone-500 mb-8 italic">The Big Day</h3>
+        <div id="countdown" class="flex justify-center space-x-6">
+            <div class="flex flex-col">
+                <span id="days" class="text-3xl font-light">00</span>
+                <span class="text-[10px] uppercase tracking-tighter text-gray-400">Days</span>
+            </div>
+            <div class="text-3xl font-thin text-stone-300">:</div>
+            <div class="flex flex-col">
+                <span id="hours" class="text-3xl font-light">00</span>
+                <span class="text-[10px] uppercase tracking-tighter text-gray-400">Hours</span>
+            </div>
+            <div class="text-3xl font-thin text-stone-300">:</div>
+            <div class="flex flex-col">
+                <span id="minutes" class="text-3xl font-light">00</span>
+                <span class="text-[10px] uppercase tracking-tighter text-gray-400">Min</span>
+            </div>
+            <div class="text-3xl font-thin text-stone-300">:</div>
+            <div class="flex flex-col">
+                <span id="seconds" class="text-3xl font-light">00</span>
+                <span class="text-[10px] uppercase tracking-tighter text-gray-400">Sec</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="py-20 px-6 bg-white fade-in">
+        <h3 class="text-center text-xl tracking-widest mb-12">LOCATION</h3>
+        <div class="space-y-6">
+            <div class="text-center">
+                <p class="font-bold text-lg mb-1 text-gray-800">세인트 메리엘</p>
+                <p class="text-sm text-gray-500 mb-6">서울 강남구 역삼동 828-10 (1층 메리엘 홀)</p>
+            </div>
+            
+            <div class="w-full rounded-lg overflow-hidden border border-stone-100 shadow-sm">
+                <img src="mapimage.png" class="w-full h-auto block" alt="세인트 메리엘 지도">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="window.location.href='https://place.map.kakao.com/1478744978?openhour=1'" class="py-3 bg-[#FAE100] text-[#3C1E1E] rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm">
+                    카카오맵
+                </button>
+                <button onclick="window.location.href='https://naver.me/5JpUFe0x'" class="py-3 bg-[#03C75A] text-white rounded-lg text-sm font-medium hover:opacity-90 transition shadow-sm">
+                    네이버 지도
+                </button>
+            </div>
+
+            <div class="mt-8 space-y-6 text-sm text-gray-600 border-t border-stone-100 pt-8">
+                <div class="flex items-start">
+                    <span class="font-bold text-amber-800 w-20 flex-shrink-0">지하철</span>
+                    <div class="space-y-1">
+                        <p>2호선 강남역 1번 출구 (도보 7분)</p>
+                        <p>신분당선 강남역 4번 출구 (도보 5분)</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <span class="font-bold text-amber-800 w-20 flex-shrink-0">주차</span>
+                    <span>건물 동편 주차장 이용 가능</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Face Photos -->
+    <section class="py-14 px-6 bg-white fade-in">
+        <div class="grid grid-cols-2 gap-4">
+            <!-- face01 -->
+            <div class="h-44 rounded-lg overflow-hidden border border-stone-100 shadow-sm bg-stone-50 flex items-center justify-center">
+                <img
+                    src="face01.jpg"
+                    onerror="this.onerror=null; this.src='face01.png';"
+                    alt="face01"
+                    class="w-full h-full object-contain"
+                    loading="lazy"
+                >
+            </div>
+
+            <!-- face02 -->
+            <div class="h-44 rounded-lg overflow-hidden border border-stone-100 shadow-sm bg-stone-50 flex items-center justify-center">
+                <img
+                    src="face02.jpg"
+                    onerror="this.onerror=null; this.src='face02.png';"
+                    alt="face02"
+                    class="w-full h-full object-contain"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white"></footer>
+
+    <!-- Simple Toast Notification -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-black/80 text-white text-xs px-6 py-3 rounded-full opacity-0 pointer-events-none transition-opacity z-50">
+        계좌번호가 복사되었습니다.
+    </div>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Countdown (Target: 2026-05-17 11:30)
+        const weddingDate = new Date('2026-05-17T11:30:00').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days < 0 ? '00' : days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours < 0 ? '00' : hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes < 0 ? '00' : minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds < 0 ? '00' : seconds.toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Accordion
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const isOpen = content.classList.contains('open');
+            document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('open'));
+            if (!isOpen) content.classList.add('open');
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+        }
+    </script>
+</body>
+</html>
